@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased transition-colors duration-200;
+  }
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-indigo-400 dark:bg-indigo-600 rounded-full;
+}
+
+/* 3D Page Transition */
+.page-transition-enter {
+  opacity: 0;
+  transform: rotateY(-90deg);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: rotateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: rotateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: rotateY(90deg);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* Custom Styles */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-indigo-400 dark:to-purple-500;
+}
+
+.nav-link {
+  @apply relative px-3 py-2 transition-colors duration-200;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 dark:bg-indigo-400 transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.nav-link.active::after {
+  @apply w-full;
+}
